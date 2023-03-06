@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PokedexMiddlewareSystem.Entities.Dot;
 
 namespace PokedexMiddlewareSystem.Controllers
 {
