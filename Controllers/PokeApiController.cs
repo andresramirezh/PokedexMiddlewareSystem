@@ -33,13 +33,13 @@ namespace PokedexMiddlewareSystem.Controllers
             return _pokeApiThreadingService.GetAndWirteMovesService(0, 20, 920);
         }
 
-        [HttpGet("GetPokemonsMovesService")]
+        [HttpGet("GetPokemonMovesService")]
         public async Task<PokeApiGenericsResponse<List<PokemonMove>>> GetMoves(int offSet, int limit)
         {
             return await _pokeApiService.GetPokemonsMovesService(offSet, limit);
         }
 
-        [HttpGet("GetPokemon")]
+        [HttpGet("GetPokemonService")]
         public async Task<Pokemon> GetPokemonById(int id)
         {
             return await _pokeApiService.GetPokemonsByIdService(id);
