@@ -1,6 +1,19 @@
+using Microsoft.Net.Http.Headers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient(name: "PokeApi", httpClient =>
+{
+    httpClient.BaseAddress = new Uri(uriString: "https://pokeapi.co/");
+
+    // using Microsoft.Net.Http.Headers;
+    // The GitHub API requires two headers.
+    httpClient.DefaultRequestHeaders.Add(
+        HeaderNames.Accept, "application/json");
+    httpClient.DefaultRequestHeaders.Add(
+        HeaderNames.UserAgent, "HttpRequestsSample");
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

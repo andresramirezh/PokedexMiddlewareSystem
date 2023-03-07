@@ -1,4 +1,4 @@
-namespace PokedexMiddlewareSystem
+namespace PokedexMiddlewareSystem.Entities.Dot
 {
     public class WeatherForecast
     {

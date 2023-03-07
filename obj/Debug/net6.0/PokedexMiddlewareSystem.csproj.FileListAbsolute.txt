@@ -30,3 +30,4 @@ C:\Users\user\Documents\Github Projects\PokedexMiddlewareSystem\obj\Debug\net6.0
 C:\Users\user\Documents\Github Projects\PokedexMiddlewareSystem\obj\Debug\net6.0\PokedexMiddlewareSystem.pdb
 C:\Users\user\Documents\Github Projects\PokedexMiddlewareSystem\obj\Debug\net6.0\PokedexMiddlewareSystem.genruntimeconfig.cache
 C:\Users\user\Documents\Github Projects\PokedexMiddlewareSystem\obj\Debug\net6.0\ref\PokedexMiddlewareSystem.dll
+C:\Users\user\Documents\Github Projects\PokedexMiddlewareSystem\bin\Debug\net6.0\Newtonsoft.Json.dll
