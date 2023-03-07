@@ -13,18 +13,22 @@ namespace PokedexMiddlewareSystem.Controllers
     {
         private readonly ILogger<PokeApiController> _logger;
         private PokeApiService _pokeApiService;
+        private PokeApiThreadingService _pokeApiThreadingService;
 
         public PokeApiController(IHttpClientFactory httpClientFactory, ILogger<PokeApiController> logger)
         {
+            /* El numero 10 en el segundo parametro es la cantidad de hilos */
+            _pokeApiThreadingService = new PokeApiThreadingService(httpClientFactory, 2); 
             _pokeApiService = new PokeApiService(httpClientFactory);
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetPokemonsMovesService")]
-        public async Task<PokeApiGenericsResponse<List<PokemonMove>>> Get() {
-            return await _pokeApiService.GetPokemonsMovesService();
 
 
-        } 
+        [HttpGet(Name = "GetAndWritePokemonsMoves")]
+        public async Task<Boolean> GetAndWrite()
+        {
+            return await _pokeApiThreadingService.GetAndWirteMovesService(0,20,920);
+        }
     }
 }
