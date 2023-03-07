@@ -1,4 +1,6 @@
-﻿namespace PokedexMiddlewareSystem.Entities.Dot
+﻿using PokedexMiddlewareSystem.Models.Entity;
+
+namespace PokedexMiddlewareSystem.Entities.Dot
 {
 
     public class Pokemon
@@ -11,13 +13,13 @@
         
         public float Width { get; set; }
 
-        public List<string>? Types { get; set; }
+        public IList<Types> Types { get; set; }
 
         public  string TypeName { get; set; }
 
-        public string Related { get; set; }
+        public IList<object> Related { get; set; }
 
-        public List<string>? Movements { get; set; }
+        public IList<object> Movements { get; set; }
 
         public string? FirstPicture { get; set; }
 
@@ -28,5 +30,7 @@
 
 
     }
+
+
 }
 

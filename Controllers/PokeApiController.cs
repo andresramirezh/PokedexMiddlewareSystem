@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using PokedexMiddlewareSystem.Clients;
 using PokedexMiddlewareSystem.Entities.Dot;
+using PokedexMiddlewareSystem.Models.Entity;
 using PokedexMiddlewareSystem.Services;
 using System.Net.Http;
+using Pokemon = PokedexMiddlewareSystem.Entities.Dot.Pokemon;
 
 namespace PokedexMiddlewareSystem.Controllers
 {
@@ -18,17 +20,29 @@ namespace PokedexMiddlewareSystem.Controllers
         public PokeApiController(IHttpClientFactory httpClientFactory, ILogger<PokeApiController> logger)
         {
             /* El numero 10 en el segundo parametro es la cantidad de hilos */
-            _pokeApiThreadingService = new PokeApiThreadingService(httpClientFactory, 2); 
+            _pokeApiThreadingService = new PokeApiThreadingService(httpClientFactory, 10);
             _pokeApiService = new PokeApiService(httpClientFactory);
             _logger = logger;
         }
 
 
 
-        [HttpGet(Name = "GetAndWritePokemonsMoves")]
-        public async Task<Boolean> GetAndWrite()
+        [HttpGet("GetAndWirtePokemonsMovesService")]
+        public  Boolean GetAndWrite()
         {
-            return await _pokeApiThreadingService.GetAndWirteMovesService(0,20,920);
+            return _pokeApiThreadingService.GetAndWirteMovesService(0, 20, 920);
+        }
+
+        [HttpGet("GetPokemonsMovesService")]
+        public async Task<PokeApiGenericsResponse<List<PokemonMove>>> GetMoves(int offSet, int limit)
+        {
+            return await _pokeApiService.GetPokemonsMovesService(offSet, limit);
+        }
+
+        [HttpGet("GetPokemon")]
+        public async Task<Pokemon> GetPokemonById(int id)
+        {
+            return await _pokeApiService.GetPokemonsByIdService(id);
         }
     }
 }
