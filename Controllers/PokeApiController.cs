@@ -27,7 +27,7 @@ namespace PokedexMiddlewareSystem.Controllers
 
 
 
-        [HttpGet("GetAndWirtePokemonsMovesService")]
+        [HttpGet("GetAndWritePokemonsMovesService")]
         public  Boolean GetAndWrite()
         {
             return _pokeApiThreadingService.GetAndWirteMovesService(0, 20, 920);
