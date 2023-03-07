@@ -9,7 +9,7 @@ namespace PokedexMiddlewareSystem.Services
         public PokeApiService(IHttpClientFactory httpClientFactory) =>
             _pokeApiClient = new PokeApiClient(httpClientFactory);
         
-        public async Task<Generic<IEnumerable<string>>?> GetPokemonsMovesService() {
+        public async Task<PokeApiGenericsResponse<List<PokemonMove>>> GetPokemonsMovesService() {
             return await _pokeApiClient.GetPokemonsMoves();
         }
     }

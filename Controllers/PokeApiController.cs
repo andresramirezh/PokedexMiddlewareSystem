@@ -21,7 +21,7 @@ namespace PokedexMiddlewareSystem.Controllers
         }
 
         [HttpGet(Name = "GetPokemonsMovesService")]
-        public async Task<Generic<IEnumerable<string>>?> Get() {
+        public async Task<PokeApiGenericsResponse<List<PokemonMove>>> Get() {
             return await _pokeApiService.GetPokemonsMovesService();
 
 

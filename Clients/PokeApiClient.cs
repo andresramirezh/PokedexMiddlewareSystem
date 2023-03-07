@@ -17,20 +17,17 @@ namespace PokedexMiddlewareSystem.Clients
 
         }
 
-        public Generic<IEnumerable<string>>? pokemonsMoves { get; set; }
-        public async Task<Generic<IEnumerable<string>>?> GetPokemonsMoves()
+        public Task<PokeApiGenericsResponse<List<PokemonMove>>>? pokemonsMoves { get; set; }
+        public async Task<PokeApiGenericsResponse<List<PokemonMove>>> GetPokemonsMoves()
         {
             HttpClient httpClient = _httpClientFactory.CreateClient("PokeApi");
-            var httpResponseMessage = await httpClient.GetAsync("api/v2/move");
+            var httpResponseMessage = await httpClient.GetAsync("api/v2/move?limit=10");
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                using var contentStream =
-                    await httpResponseMessage.Content.ReadAsStreamAsync();
-                Console.WriteLine("contentStream",contentStream);
-                pokemonsMoves = await JsonSerializer.DeserializeAsync
-                    <Generic<IEnumerable<string>>?>(contentStream);
+                return await httpResponseMessage.Content.ReadFromJsonAsync<PokeApiGenericsResponse<List<PokemonMove>>>();
+
             }
-            return pokemonsMoves;
+            return null;
         }
     }
 }
